@@ -1,0 +1,4 @@
+# Projektidee
+## digitale Wunschliste
+Ich habe mich bei meinem Projekt für eine digitale Wunschliste entschieden.
+Diese wird auf 3 Seiten aufgebaut. Auf der ersten Seite sieht man eine komplette Übersicht von allen Artikeln der Wunschliste, wo man diese ebenfalls hinzufügen oder löschen kann. Auf der zweiten Seite sieht man eine komplette Übersicht in Form von einer Rangliste, die der Ersteller beliebig bearbeiten kann. Um so darstellen zu können welche Wünsche Priorität haben. Auf die dritte Seite gelangt man durch das Anklicken eines Artikels auf der ersten oder zweiten Seite. Auf dieser dritten Seite findet man nun die Marke des Artikels, wo es diesen zu kaufen gibt und das Datum des Hinzufügens zur Wunschliste, damit man sehen kann wie aktuell dieser Wunsch ist.
