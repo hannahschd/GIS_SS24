@@ -1,0 +1,22 @@
+h1 /*Selector*/ {
+    background: rgb(198, 144, 210); /*Declaration*/
+  }
+h1 {
+    font: 50px Apple Chancery;
+    text-decoration: none;
+    color: white;
+    padding: 0px 5px 0px 5px;
+    border-right: 2px solid white;
+  }
+  a:hover {
+    font-size: 1.1em; 
+}
+h1 {
+    text-align: center;
+}
+label {
+    font-weight: bold;
+}
+footer {
+    margin-top: 50px; 
+}
