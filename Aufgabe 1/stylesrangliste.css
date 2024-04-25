@@ -1,22 +1,28 @@
-h1 /*Selector*/ {
-    background: rgb(198, 144, 210); /*Declaration*/
-  }
+/* Design Überschrift */
 h1 {
+    background: rgb(198, 144, 210); 
     font: 50px Apple Chancery;
-    text-decoration: none;
-    color: white;
-    padding: 0px 5px 0px 5px;
-    border-right: 2px solid white;
-  }
-  a:hover {
-    font-size: 1.1em; 
-}
-h1 {
+    color: white;  
     text-align: center;
-}
+ }
+
+/* Design Links */
+ a:hover {
+    font-size: 1.3em; 
+    color:rgb(198, 144, 210) ;
+ }
+a {
+    font: 20px Times New Roman;
+    color: black;
+ }
+
+ /* Design Text */
 label {
     font-weight: bold;
-}
+ }
+
+/* Design Footer */
 footer {
     margin-top: 50px; 
-}
+ }
+

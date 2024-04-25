@@ -6,28 +6,43 @@
     <title>Meine Wunschliste</title>
     <link rel="stylesheet" href="styleshauptseite.css" />
   </head>
-  <body>
-    
-    <main>
-    <h1> Meine Wunschliste</h1>
-   
-       
-        <label>Wunsch hinzufügen:</label>
-        <input type="text" />
-      
-    <img src="Bilder/wunschliste.jpg" />
-    
-       <p> <a href="http://127.0.0.1:5500/Aufgabe%201/tasse.html"> Tasse </a> </p>
-        <p><a href="http://127.0.0.1:5500/Aufgabe%201/buch.html"> Buch </a> </p>  
-        <p> <a href="http://127.0.0.1:5500/Aufgabe%201/handy.html"> Handy </a> </p>
   
+  <!-- Hier begint die Seite -->
+  <body>
+    <header>
+      <h1> Meine Wunschliste</h1>
 
+      <div>
+      <img src="Bilder/wunschliste.jpg" />
+      </div>
+
+    </header>
+
+    <!-- Hauptinhalte der Seite -->
+    <main> 
+      <label>Wunsch hinzufügen:</label>
+        <input type="text" />
+
+        <div id="elementToBeSaved">
+        <button onclick="saveData()">Speichern</button>
+        </div>
+      
+    <!-- die verschiedenen Artikel -->
+      <div>
+        <p> <a href="http://127.0.0.1:5500/Aufgabe%201/tasse.html"> Tasse </a> </p>
+        <p> <a href="http://127.0.0.1:5500/Aufgabe%201/buch.html"> Buch </a> </p>
+        <p> <a href="http://127.0.0.1:5500/Aufgabe%201/handy.html"> Handy </a> </p>
+
+      </div>
     </main>
+
+    <!-- Rangliste -->
     <footer>
-        <p>
+      <p>
         <a href="http://127.0.0.1:5500/Aufgabe%201/rangliste.html"> Rangliste </a>
         <br />
-        </p>
+      </p>
+        
     </footer>
   </body>
 </html>

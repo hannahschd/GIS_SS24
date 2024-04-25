@@ -1,19 +1,22 @@
-h1 /*Selector*/ {
-    background: rgb(198, 144, 210); /*Declaration*/
-  }
-h1 {
+/* Design der Überschrift*/
+h1  {
+    background: rgb(198, 144, 210); 
     font: 50px Apple Chancery;
-    text-decoration: none;
-    color: white;
-    padding: 0px 5px 0px 5px;
-    border-right: 2px solid white;
-  }
-a:hover {
-    font-size: 1.1em; 
-}
-h1 {
+    color: white; 
     text-align: center;
 }
+
+/* Design der Links */
+a:hover {
+    font-size: 1.3em; 
+    color:rgb(198, 144, 210) ;
+}
+a {
+    font: 20px Times New Roman;
+    color: black;
+  }
+
+/* Design des Textes */
 p {
     text-align: center;
 }
@@ -21,13 +24,15 @@ label {
     font-weight: bold;
 }
 
+/* Design des Footers */
 footer {
     margin-top: 50px; 
 }
+
+/* Design der Bilder */
 img {
-    float: none; 
-}
-img {
-    width: 300px; /* Breite des Bildes */
-    height: auto; /* Automatische Anpassung der Höhe, um das Bildverhältnis beizubehalten */
+    width: 300px; 
+    height: auto; 
+    margin-left: 550px;
+    margin-right: auto;
 }

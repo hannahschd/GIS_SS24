@@ -6,15 +6,34 @@
     <title>Tasse</title>
     <link rel="stylesheet" href="stylestasse.css" />
   </head>
+
+  <!-- Hier beginnt die Seite -->
   <body>
-    <h1> Tasse </h1>
-    <img src="Bilder/tasse.jpg" />
+    <header>
+      <h1> Tasse </h1>
+
+    <div>
+      <img src="Bilder/tasse.jpg" />
+    </div>
+
+  <!-- Hauptinhalt der Seite -->
     <label> Marke: </label>
       <input type="text" />
-    <label> Seite: </label>
+    <label> Link: </label>
       <input type="text" />
     <p> Datum: <input type="date" /></p>
-    <p style="color: red">Löschen</p>
+
+  <!-- Speichern-Button -->
+    <div id="elementToBeSaved">
+      <button onclick="saveData()">Speichern</button>
+      </div>
+  
+  <!-- Löschen-Button -->
+    <div id="elementToBeDeleted">
+      <button onclick="deleteElement()">Löschen</button>
+    </div>
+    
+  <!-- Links zu vorherigen Seiten -->
     <footer>
       <a href="http://127.0.0.1:5500/Aufgabe%201/hauptseite.html"> Zurück </a>
       <br />

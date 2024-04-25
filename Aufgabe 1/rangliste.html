@@ -6,23 +6,36 @@
     <title>Rangliste</title>
     <link rel="stylesheet" href="stylesrangliste.css" />
   </head>
+
+  <!-- Hier beginnt die Seite -->
   <body>
+    <header>
+      <h1>Rangliste</h1>
+    </header>
+
+  <!-- Hauptinhalt der Seite -->
+  <!-- Wunsch hinzufügen -->
     <main>
-    <h1>Rangliste</h1>
-    <p>
-        <label> Hinzufügen: </label>
-        <input type="text" />
+      <p>
+        <label>Wunsch hinzufügen:</label>
+          <input type="text" />
+   
+  <!-- Speichern-Button -->        
+        <div id="elementToBeSaved">
+          <button onclick="saveData()">Speichern</button>
+        </div>
+  <!-- Rangliste -->
         <ol>
-            <li><a href="http://127.0.0.1:5500/Aufgabe%201/tasse.html"> Tasse </a></li>
+          <li><a href="http://127.0.0.1:5500/Aufgabe%201/tasse.html"> Tasse </a></li>
             <br />
-            <li><a href="http://127.0.0.1:5500/Aufgabe%201/buch.html"> Buch </a></li>
+          <li><a href="http://127.0.0.1:5500/Aufgabe%201/buch.html"> Buch </a></li>
             <br />
-            <li><a href="http://127.0.0.1:5500/Aufgabe%201/handy.html"> Handy </a> </li>
+          <li><a href="http://127.0.0.1:5500/Aufgabe%201/handy.html"> Handy </a> </li>
             <br />
-        </ol>
-        
-    </p>
+        </ol>    
+      </p>
     </main>
+  <!-- Link zu der vorherigen Seite -->
     <footer>
       <a href="http://127.0.0.1:5500/Aufgabe%201/hauptseite.html"> Zurück </a>
       <br />
