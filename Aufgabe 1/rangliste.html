@@ -1,44 +1,22 @@
 <!DOCTYPE html>
 <html lang="de">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rangliste</title>
-    <link rel="stylesheet" href="stylesrangliste.css" />
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rangliste</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="rangliste.js" defer></script>
+</head>
+<body>
+  <h1>Rangliste</h1>
 
-  <!-- Hier beginnt die Seite -->
-  <body>
-    <header>
-      <h1>Rangliste</h1>
-    </header>
-
-  <!-- Hauptinhalt der Seite -->
-  <!-- Wunsch hinzufügen -->
-    <main>
-      <p>
-        <label>Wunsch hinzufügen:</label>
-          <input type="text" />
-   
-  <!-- Speichern-Button -->        
-        <div id="elementToBeSaved">
-          <button onclick="saveData()">Speichern</button>
-        </div>
-  <!-- Rangliste -->
-        <ol>
-          <li><a href="http://127.0.0.1:5500/Aufgabe%201/tasse.html"> Tasse </a></li>
-            <br />
-          <li><a href="http://127.0.0.1:5500/Aufgabe%201/buch.html"> Buch </a></li>
-            <br />
-          <li><a href="http://127.0.0.1:5500/Aufgabe%201/handy.html"> Handy </a> </li>
-            <br />
-        </ol>    
-      </p>
-    </main>
-  <!-- Link zu der vorherigen Seite -->
-    <footer>
-      <a href="http://127.0.0.1:5500/Aufgabe%201/hauptseite.html"> Zurück </a>
-      <br />
-    </footer>
-  </body>
+  <!-- Bereich, in dem die Rangliste angezeigt wird -->
+  <div id="rank-list"></div>
+ 
+  <footer>
+    <a href="hauptseite.html">Zurück</a>
+  </footer>
+</body>
 </html>
+
+

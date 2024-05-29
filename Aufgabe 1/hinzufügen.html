@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Detailseite</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="hinzufügen.js" defer></script>
+</head>
+<body>
+  <h1>Detailseite</h1>
+
+  <!-- Bereich für das Bild -->
+  <div id="image-container">
+    <img id="displayed-image" src="Bilder/placeholder.jpg" alt="Bild" />
+  </div>
+
+  <!-- Hauptteil der Seite -->
+  <label>Marke:</label>
+    <input type="text" id="marke" /> 
+  <label>Link:</label>
+    <input type="text" id="link" oninput="updateImage()" /> 
+  <p>Datum: <input type="date" id="datum" /></p>
+  <label>Rang:</label>
+    <input type="number" id="rank" min="1" /> 
+
+  <!-- Speichern-Button -->
+  <div id="elementToBeSaved">
+    <button onclick="saveDetailData()">Speichern</button>
+  </div>
+
+  <!-- Löschen-Button -->
+  <div id="elementToBeDeleted">
+    <button onclick="deleteDetail()">Löschen</button>
+  </div>
+
+  <!-- Bereich zum Anzeigen der gespeicherten Daten -->
+  <div id="detail-display"></div>
+
+  <!-- Links zu den vorherigen Seiten -->
+  <footer>
+    <a href="hauptseite.html">Zurück</a>
+    <br />
+    <a href="rangliste.html">Rangliste</a>
+    <br />
+  </footer>
+</body>
+</html>
+
+
+
+
+

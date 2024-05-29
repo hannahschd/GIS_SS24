@@ -1,50 +1,41 @@
 <!DOCTYPE html>
 <html lang="de">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Meine Wunschliste</title>
-    <link rel="stylesheet" href="styleshauptseite.css" />
-  </head>
-  
-  <!-- Hier begint die Seite -->
-  <body>
-    <header>
-      <h1> Meine Wunschliste</h1>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meine Wunschliste</title>
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Verlinkt die JavaScript-Datei und verzögert deren Ausführung, bis die Seite geladen ist -->
+  <script src="script.js" defer></script>
 
-      <div>
-      <img src="Bilder/wunschliste.jpg" />
-      </div>
+<!-- Inhalt der Seite -->
+</head>
+<body>
+  <header>
+    <h1>Meine Wunschliste</h1>
+    <div>
+      <img src="Bilder/wunschliste.jpg" alt="Wunschliste" />
+    </div>
+  </header>
 
-    </header>
+  <main>
+      <!-- Formular zum Hinzufügen eines neuen Wunsches -->
+    <form id="wish-form">
+      <label for="wish">Wunsch hinzufügen:</label>
+      <!-- Eingabefeld für den Wunsch -->
+      <input type="text" id="wish" name="wish" />
+     <!-- Button zum Speichern des Wunsches, ruft die Funktion saveData() auf -->
+      <button type="button" onclick="saveData()">Speichern</button>
+    </form>
+         
+    <!-- Bereich, in dem die gespeicherten Wünsche angezeigt werden -->
+    <div id="wish-list"></div>
+  </main>
 
-    <!-- Hauptinhalte der Seite -->
-    <!-- Wunsch hinzufügen -->
-    <main> 
-      <label>Wunsch hinzufügen:</label>
-        <input type="text" />
-
-    <!-- Speicher-Button -->    
-        <div id="elementToBeSaved">
-        <button onclick="saveData()">Speichern</button>
-        </div>
-      
-    <!-- die verschiedenen Artikel -->
-      <div>
-        <p> <a href="http://127.0.0.1:5500/Aufgabe%201/tasse.html"> Tasse </a> </p>
-        <p> <a href="http://127.0.0.1:5500/Aufgabe%201/buch.html"> Buch </a> </p>
-        <p> <a href="http://127.0.0.1:5500/Aufgabe%201/handy.html"> Handy </a> </p>
-
-      </div>
-    </main>
-
-    <!-- Rangliste -->
-    <footer>
-      <p>
-        <a href="http://127.0.0.1:5500/Aufgabe%201/rangliste.html"> Rangliste </a>
-        <br />
-      </p>
-        
-    </footer>
-  </body>
+  <footer>
+     <!-- Link zur Rangliste-Seite -->
+    <p><a href="rangliste.html">Rangliste</a></p>
+  </footer>
+</body>
 </html>
+
