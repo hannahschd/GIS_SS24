@@ -1,20 +1,19 @@
 // Wartet, bis das gesamte Dokument geladen ist, bevor der Code ausgeführt wird
 document.addEventListener('DOMContentLoaded', (event) => {
-  // Ruft die Funktion auf, um die Rangliste anzuzeigen
+// Ruft die Funktion auf, um die Rangliste anzuzeigen
   displayRankList();
 });
 
 // Funktion, um die Rangliste anzuzeigen
 function displayRankList() {
-  // Findet das HTML-Element mit der ID 'rank-list'
   const rankListDiv = document.getElementById('rank-list');
-  // Holt die 'rankList' aus dem Local Storage und parst sie in ein JavaScript-Objekt. Falls 'rankList' nicht existiert, wird ein leeres Array verwendet
+  // Holt die 'rankList' aus dem Local Storage. Falls 'rankList' nicht existiert, wird ein leeres Array verwendet
   let rankList = JSON.parse(localStorage.getItem('rankList')) || [];
   
-  // Löscht den aktuellen Inhalt von 'rank-list', um die aktualisierte Rangliste anzuzeigen
+// Löscht den aktuellen Inhalt von 'rank-list', um die aktualisierte Rangliste anzuzeigen
   rankListDiv.innerHTML = '';
   
-  // Durchläuft jedes Element in der Rangliste
+ // Durchläuft jedes Element in der Rangliste
   rankList.forEach((item, index) => {
     // Erstellt ein neues <div>-Element für jedes Ranglistenelement
     const listItem = document.createElement('div');
