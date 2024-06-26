@@ -17,6 +17,18 @@ function saveData() {
   wishes.push(wish);
   localStorage.setItem('wishes', JSON.stringify(wishes));
 
+  // Sendet den neuen Wunsch an den Server
+  fetch('http://127.0.0.1:3000/wishes', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ wish }),
+  })
+    .then(response => response.text())
+    .then(data => console.log(data))
+    .catch(error => console.error('Error:', error));
+
   // Setzt das Eingabefeld zurück und aktualisiert die angezeigte Wunschliste
   wishInput.value = '';
   displayWishes();

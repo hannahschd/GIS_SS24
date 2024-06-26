@@ -1,19 +1,24 @@
 // Wartet, bis das gesamte Dokument geladen ist, bevor der Code ausgeführt wird
 document.addEventListener('DOMContentLoaded', (event) => {
-// Ruft die Funktion auf, um die Rangliste anzuzeigen
+  // Ruft die Funktion auf, um die Rangliste anzuzeigen
   displayRankList();
 });
 
 // Funktion, um die Rangliste anzuzeigen
-function displayRankList() {
+async function displayRankList() {
   const rankListDiv = document.getElementById('rank-list');
-  // Holt die 'rankList' aus dem Local Storage. Falls 'rankList' nicht existiert, wird ein leeres Array verwendet
-  let rankList = JSON.parse(localStorage.getItem('rankList')) || [];
+  // Holt die 'rankList' vom Server
+  let rankList = await fetch('http://127.0.0.1:3000/rankList')
+    .then(response => response.json())
+    .catch(error => {
+      console.error('Error fetching rankList:', error);
+      return JSON.parse(localStorage.getItem('rankList')) || [];
+    });
   
-// Löscht den aktuellen Inhalt von 'rank-list', um die aktualisierte Rangliste anzuzeigen
+  // Löscht den aktuellen Inhalt von 'rank-list', um die aktualisierte Rangliste anzuzeigen
   rankListDiv.innerHTML = '';
   
- // Durchläuft jedes Element in der Rangliste
+  // Durchläuft jedes Element in der Rangliste
   rankList.forEach((item, index) => {
     // Erstellt ein neues <div>-Element für jedes Ranglistenelement
     const listItem = document.createElement('div');
@@ -30,16 +35,37 @@ function displayRankList() {
 }
 
 // Funktion zum Löschen eines Artikels
-function deleteItem(index) {
-  // Holt die 'rankList' aus dem Local Storage
-  let rankList = JSON.parse(localStorage.getItem('rankList')) || [];
+async function deleteItem(index) {
+  // Holt die 'rankList' vom Server
+  let rankList = await fetch('http://127.0.0.1:3000/rankList')
+    .then(response => response.json())
+    .catch(error => {
+      console.error('Error fetching rankList:', error);
+      return JSON.parse(localStorage.getItem('rankList')) || [];
+    });
+  
   // Entfernt den Artikel an der angegebenen Indexposition aus der Rangliste
   rankList.splice(index, 1);
+  
   // Speichert die aktualisierte Rangliste im Local Storage
   localStorage.setItem('rankList', JSON.stringify(rankList));
+  
+  // Sendet die aktualisierte Rangliste an den Server
+  fetch('http://127.0.0.1:3000/rankList', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(rankList),
+  })
+  .then(response => response.text())
+  .then(data => console.log(data))
+  .catch(error => console.error('Error:', error));
+
   // Aktualisiert die angezeigte Rangliste
   displayRankList();
 }
+
 
 
   
