@@ -47,11 +47,13 @@ db.run(`
 const server = http.createServer((request, response) => {
   response.setHeader('Access-Control-Allow-Origin', '*'); // on CORS error
   response.setHeader('Content-Type', 'application/json');
+  response.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
   const parsedUrl = url.parse(request.url, true);
   const { pathname, query } = parsedUrl;
 
-  if (request.method === 'POST' && pathname === '/details') {
+
+  if (request.method === 'POST' && pathname === '/wishes') {
     let body = '';
     request.on('data', chunk => {
       body += chunk.toString();
@@ -168,6 +170,11 @@ const server = http.createServer((request, response) => {
       }
     });
   } else if (request.method === 'GET' && pathname === '/rankList') {
+
+    else if(request.method === 'OPTIONS'){
+      response.statusCode = 200;
+      response.end();
+    }
     // Rangliste aus der Datenbank abrufen
     db.all(`SELECT * FROM rankList ORDER BY rank`, [], (err, rows) => {
       if (err) {
