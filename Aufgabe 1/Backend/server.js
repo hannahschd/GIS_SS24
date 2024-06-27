@@ -1,9 +1,10 @@
-const http = require('http');
-const url = require('url');
-const sqlite3 = require('sqlite3').verbose();
+// Importieren der benötigten Module
+const http = require('http'); // Modul für die Erstellung eines HTTP-Servers
+const url = require('url'); // Modul zum Parsen von URL-Strings
+const sqlite3 = require('sqlite3').verbose(); // Modul für die Verwendung der SQLite-Datenbank
 
-const hostname = '127.0.0.1';
-const port = 3000;
+const hostname = '127.0.0.1'; // Der Hostname, auf dem der Server laufen wird
+const port = 3000; // Der Port, auf dem der Server laufen wird
 
 // Verbindung zur SQLite-Datenbank herstellen
 const db = new sqlite3.Database('./myDatabase.db', (err) => {
@@ -44,15 +45,18 @@ db.run(`
   }
 });
 
+// Erstellen des HTTP-Servers
 const server = http.createServer((request, response) => {
-  response.setHeader('Access-Control-Allow-Origin', '*'); // on CORS error
-  response.setHeader('Content-Type', 'application/json');
-  response.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  // Setzen der Header für CORS und den Content-Typ
+  response.setHeader('Access-Control-Allow-Origin', '*'); // CORS-Einstellungen
+  response.setHeader('Content-Type', 'application/json'); // Content-Typ als JSON
+  response.setHeader('Access-Control-Allow-Headers', 'Content-Type'); // Erlaubte Header
 
+  // Parsen der URL
   const parsedUrl = url.parse(request.url, true);
   const { pathname, query } = parsedUrl;
 
-
+  // POST-Anfrage zum Hinzufügen von Detaildaten
   if (request.method === 'POST' && pathname === '/wishes') {
     let body = '';
     request.on('data', chunk => {
@@ -61,6 +65,7 @@ const server = http.createServer((request, response) => {
     request.on('end', () => {
       try {
         const detailData = JSON.parse(body);
+
         // Detaildaten in der Datenbank speichern
         db.run(`
           INSERT OR REPLACE INTO details (wish, marke, link, datum, rank)
@@ -82,13 +87,16 @@ const server = http.createServer((request, response) => {
         response.end('Invalid JSON');
       }
     });
-  } else if (request.method === 'DELETE' && pathname === '/details') {
+
+  // DELETE-Anfrage zum Löschen von Detaildaten
+  } else if (request.method === 'DELETE' && pathname === '/wishes') {
     const { wish } = query;
     if (wish) {
+
       // Detaildaten aus der Datenbank löschen
-      db.run(`DELETE FROM details WHERE wish = ?`, [wish], (err) => {
+      db.run(`DELETE FROM wishes WHERE wish = ?`, [wish], (err) => {
         if (err) {
-          console.error('Error deleting detail', err);
+          console.error('Error deleting wish', err);
           response.statusCode = 500;
           response.end('Database error');
         } else {
@@ -100,13 +108,15 @@ const server = http.createServer((request, response) => {
       response.statusCode = 404;
       response.end('Detail not found');
     }
+
+  // GET-Anfrage zum Abrufen von Detaildaten
   } else if (request.method === 'GET' && pathname === '/details') {
     const { wish } = query;
     if (wish) {
       // Detaildaten aus der Datenbank abrufen
-      db.get(`SELECT * FROM details WHERE wish = ?`, [wish], (err, row) => {
+      db.get(`SELECT * FROM wishes WHERE wish = ?`, [wish], (err, row) => {
         if (err) {
-          console.error('Error fetching detail', err);
+          console.error('Error fetching wish', err);
           response.statusCode = 500;
           response.end('Database error');
         } else if (row) {
@@ -114,13 +124,15 @@ const server = http.createServer((request, response) => {
           response.end(JSON.stringify(row));
         } else {
           response.statusCode = 404;
-          response.end('Detail not found');
+          response.end('wish not found');
         }
       });
     } else {
       response.statusCode = 404;
-      response.end('Detail not found');
+      response.end('wish not found');
     }
+
+  // POST-Anfrage zum Aktualisieren der Rangliste
   } else if (request.method === 'POST' && pathname === '/rankList') {
     let body = '';
     request.on('data', chunk => {
@@ -130,6 +142,8 @@ const server = http.createServer((request, response) => {
       try {
         const rankList = JSON.parse(body);
         db.serialize(() => {
+
+          // Alte Rangliste löschen
           db.run(`DELETE FROM rankList`, (err) => {
             if (err) {
               console.error('Error deleting rankList', err);
@@ -138,6 +152,7 @@ const server = http.createServer((request, response) => {
               return;
             }
 
+            // Neue Rangliste einfügen
             const stmt = db.prepare(`
               INSERT INTO rankList (wish, marke, link, datum, rank)
               VALUES (?, ?, ?, ?, ?)
@@ -169,12 +184,10 @@ const server = http.createServer((request, response) => {
         response.end('Invalid JSON');
       }
     });
-  } else if (request.method === 'GET' && pathname === '/rankList') {
 
-    else if(request.method === 'OPTIONS'){
-      response.statusCode = 200;
-      response.end();
-    }
+  // GET-Anfrage zum Abrufen der Rangliste
+  } else if (request.method === 'GET' && pathname === '/rankList') {
+    
     // Rangliste aus der Datenbank abrufen
     db.all(`SELECT * FROM rankList ORDER BY rank`, [], (err, rows) => {
       if (err) {
@@ -186,6 +199,12 @@ const server = http.createServer((request, response) => {
         response.end(JSON.stringify(rows));
       }
     });
+
+  // OPTIONS-Anfrage für CORS-Preflight-Anfragen
+  } else if(request.method === 'OPTIONS'){
+      response.statusCode = 200;
+      response.end();
+
   } else {
     response.statusCode = 404;
     response.end('Not Found');
@@ -196,4 +215,5 @@ const server = http.createServer((request, response) => {
 server.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
 });
+
    
